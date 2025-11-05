@@ -1,11 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- FILE: index.html -->
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cápsula do Tempo — Marvel Rivals</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+  <main class="card">
+    <header class="card__header">
+      <h1>🕹️ Cápsula do Tempo — Marvel Rivals</h1>
+      <p class="meta">Registro rápido — só o agora, sem nostalgia exagerada.</p>
+    </header>
+
+    <section class="card__body">
+      <p>Atualmente tô viciado em <strong>Marvel Rivals</strong>. Jogo quase todo dia, e sempre acabo voltando pra <em>Luna Show</em> — a rainha do caos. O jogo é uma mistura perfeita de pancadaria, tática e aleatoriedade, e talvez seja exatamente por isso que eu gosto tanto.</p>
+
+      <p>Tem partida que dá vontade de quebrar o teclado, e outra que sai tudo tão certo que parece que o universo conspirou a favor. Mas no fim, é divertido, e é isso que importa.</p>
+
+      <p>Se um dia eu ler isso e o jogo já tiver morrido (ou eu tiver parado de jogar), espero que lembre de como era bom sentar e esquecer do mundo por uns minutos.</p>
+
+      <p class="signature">Ass: <strong>João</strong> — ainda acreditando que <em>Luna Show</em> carrega o time.</p>
+    </section>
+
+    <footer class="card__footer">
+      <label for="years">Abrir após</label>
+      <select id="years">
+        <option value="1">1 ano</option>
+        <option value="3">3 anos</option>
+        <option value="5" selected>5 anos</option>
+        <option value="10">10 anos</option>
+      </select>
+
+      <button id="saveBtn" class="btn">Salvar como .txt</button>
+    </footer>
+  </main>
+
+  <script>
+    // função simples para baixar o texto como .txt
+    const saveBtn = document.getElementById('saveBtn');
+    saveBtn.addEventListener('click', () => {
+      const text = document.querySelector('.card__body').innerText + '\n\nAbrir após: ' + document.getElementById('years').value + ' ano(s)';
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'capsula_marvel_rivals.txt';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+  </script>
 </body>
-</html>
+    </html>
